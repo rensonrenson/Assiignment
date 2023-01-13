@@ -160,7 +160,7 @@ class MyTestCase(unittest.TestCase):
         self_join.assertTrue(res)
         # Compare data in transformed_df and expected_df
         self_join.assertEqual(sorted(expected_df3.collect()), sorted(transformed_df3.collect()))
-
+        #
 
 if __name__ == '__main__':
     unittest.main()

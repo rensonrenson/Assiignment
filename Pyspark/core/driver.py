@@ -1,7 +1,7 @@
 from Pyspark.core.utils import *
 
 spark = sparkSession()
-
+ 
 fileDF = converyDF(spark)
 fileDF.show()
 
@@ -14,7 +14,7 @@ remove_space_Brand = remove_space(fileDF)
 print(remove_space_Brand)
 
 # Replace null values with empty values in Country column
-removeNull_value = removeNull(fileDF,"country")
+removeNull_value = removeNull(fileDF)
 removeNull_value.show()
 
 # Write a schema for table2
@@ -25,7 +25,7 @@ snake_case = convertsnake_case(trans_DF)
 snake_case.show()
 
 # Add another column as start_time_ms and convert the values of StartTime to milliseconds
-convery_milli_sec = converyMilliSec(trans_DF,"timestamp")
+convery_milli_sec = converyMilliSec(trans_DF)
 convery_milli_sec.show()
 
 #Combine both the tables based on the Product Number

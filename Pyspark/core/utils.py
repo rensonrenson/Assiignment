@@ -35,7 +35,7 @@ def remove_space(df):
     return remove_Space_Brand
 
 # Replace null values with empty values in Country column
-def removeNull(df,Country):
+def removeNull(df):
     remove_Null_value =df.withColumn("Country", F.when(col("user_Country")=="null","").otherwise(col("user_Country")))
     return remove_Null_value
 
@@ -60,9 +60,9 @@ def convertsnake_case(df):
     return df_column_name
 
 # Add another column as start_time_ms and convert the values of StartTime to milliseconds
-def converyMilliSec(df,timestamp):
-    convert_milli_sec = df.withColumn(timestamp, F.to_timestamp(col("StartTime")))\
-        .withColumn("millisecond", F.unix_timestamp(col(timestamp)))
+def converyMilliSec(df):
+    convert_milli_sec = df.withColumn("timestamp", F.to_timestamp(col("StartTime")))\
+        .withColumn("millisecond", F.unix_timestamp(col("timestamp")))
     return convert_milli_sec
 
 # Combine both the tables based on the Product Number

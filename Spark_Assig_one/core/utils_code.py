@@ -32,10 +32,10 @@ def transactionDF(spark):
 def joinDF(user_DF,transaction_DF):
     joinDF = user_DF.join(transaction_DF,user_DF.user_id == transaction_DF.userid,"inner")
     return joinDF
-def count_location(join_DF,location,product_description):
+
+#def count_location(join_DF,location,product_description):
     count_ul = join_DF.groupBy(product_description,location).agg(count(location).alias("new_count"))
     return count_ul
-#
 def product_Bought(join_df,userid):
     product_bought = join_df.groupBy(userid).agg(count("product_description").alias("new_count"))
     return product_bought
