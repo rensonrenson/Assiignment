@@ -30,6 +30,7 @@ def Withcolumn_Log(sparkDF):
 #Count the number of WARNing messages
 def find_warn(df,Logging):
      find_warn_log = df.filter(col(Logging) == "WARN").agg(count("*").alias("warn_count"))
+     # find_warn_log =find_warn_log.astype(str)
      return find_warn_log
 
 #Count the number of Total line
@@ -44,8 +45,8 @@ def api_Client(df):
 
 #Which client did most HTTP requests
 def most_Http(df):
-    most_Http_count=df.groupBy("ghtorrent").agg(count("*").alias("Most_Http"))
-    most_Http_count.orderBy(col("Most_Http"))
+    most_Http_count=df.groupBy("ghtorrent").agg(count("ghtorrent").alias("Most_Http"))
+    most_Http_count.sort(col("Most_Http").desc())
     return most_Http_count
 
 #Which client did most FAILED HTTP requests
@@ -56,7 +57,7 @@ def faild_Request(df):
 #most active hour of day
 def most_Acite_Hour(df):
     most_Active_Hour_Count = df.withColumn("active_hour",hour(col("timestamp"))).groupBy("active_hour").agg(count("*").alias("moar_Active_Hour"))
-    most_Active_Hour_Count.sort("moar_Active_Hour")
+    # most_Active_Hour_Count.sort("moar_Active_Hour")
     return most_Active_Hour_Count
 
 #most active repository
