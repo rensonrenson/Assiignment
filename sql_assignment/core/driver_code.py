@@ -16,8 +16,6 @@ print(emp_details_df)
 
 emp_window_df=empwindows_details(emp_details_df)
 emp_window_df.show()
-emp_window_df=empwindows_details(emp_details_df)
-emp_window_df.show()
 
 emp_aggfunc_df=emp_aggfunc(emp_window_df)
 emp_aggfunc_df.show()
